@@ -1,0 +1,45 @@
+---
+### Default properties for this module
+
+server:
+  port: 8181
+  servlet:
+    context-path: /api
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  server:
+    port: 8182
+
+---
+### Properties for dev profile
+spring:
+  profiles: dev
+  datasource:
+    url: ${DATASOURCE_URL:jdbc:h2:tcp://localhost:1521/test}
+    username: ${DATASOURCE_USERNAME:apiuser}
+    password: ${DATASOURCE_PASSWORD:xsw123cde}
+
+---
+### Properties for test profile
+spring:
+  profiles: test
+  datasource:
+    url: ${DATASOURCE_URL:jdbc:h2:tcp://localhost:1521/test}
+    username: ${DATASOURCE_USERNAME:apiuser}
+    password: ${DATASOURCE_PASSWORD:xsw123cde}
+
+---
+### Properties for test profile
+spring:
+  profiles: prod
+  datasource:
+    url: ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
